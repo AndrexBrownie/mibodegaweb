@@ -4,4 +4,4 @@
 require_once "../libs/core.php";
 require_once "../app/helpers/helpers.php";
 
-$Core = new Core();
+$Core = new Libs\Core();
