@@ -8,8 +8,8 @@ class HomeController
     public function index($param = null)
     {
         echo "Página de Inicio" , "</br>";
-        echo($param[0]), "</br>";
-        echo ($param[1]), "</br>";
+        //echo($param[0]), "</br>";
+        //echo($param[1]), "</br>";
     }
 
     public function suma($param)

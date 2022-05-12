@@ -1,0 +1,24 @@
+{"name": "abe/mibodegaweb",
+"description": "Software de ventas online",
+"type": "proyect",
+"authors": [
+    {
+        "name" : "ABE", "email": "ronal.estradam@gmail.com"
+    }
+],
+
+"autoload": {
+    "psr-4": {
+        "Libs\\":"Libs/",
+        "App\\Controllers\\":"app/controllers"
+    },
+    "files": [
+        "app/helpers/helpers.php"
+    ]
+},
+
+"require": {
+                "jenssegers/blade": "^1.4"
+        }
+
+}
