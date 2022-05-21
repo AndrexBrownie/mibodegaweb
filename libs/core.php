@@ -44,7 +44,7 @@ class Core {
                        $controller->{$url[1]}($param);
                    }else
                    {
-                        $controller->{$url[1]}($param);
+                        $controller->{$url[1]}();
                    }
                    //echo "La acción  {$url[1]} SI xiste";
                }else
@@ -63,7 +63,7 @@ class Core {
         }
 
         //echo "<pre>", print_r($url), "</pre>";
-        myEchoPre($url);
-        myEchoDump($url);
+        //myEchoPre($url);
+        //myEchoDump($url);
     }
 }
