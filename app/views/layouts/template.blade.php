@@ -1,102 +1,139 @@
 <!doctype html>
-<html lang="en" class="h-100">
+<html class="no-js" lang="zxx">
+    
+<!-- index-431:41-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>MiBodega - @yield('title')</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="<?= URL . 'images/favicon.png'?>">
+        <!-- Material Design Iconic Font-V2.2.0 -->
+        <link rel="stylesheet" href="{{URL}}css/material-design-iconic-font.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{URL}}css/font-awesome.min.css">
+        <!-- Font Awesome Stars-->
+        <link rel="stylesheet" href="{{URL}}css/fontawesome-stars.css">
+        <!-- Meanmenu CSS -->
+        <link rel="stylesheet" href="{{URL}}css/meanmenu.css">
+        <!-- owl carousel CSS -->
+        <link rel="stylesheet" href="{{URL}}css/owl.carousel.min.css">
+        <!-- Slick Carousel CSS -->
+        <link rel="stylesheet" href="{{URL}}css/slick.css">
+        <!-- Animate CSS -->
+        <link rel="stylesheet" href="{{URL}}css/animate.css">
+        <!-- Jquery-ui CSS -->
+        <link rel="stylesheet" href="{{URL}}css/jquery-ui.min.css">
+        <!-- Venobox CSS -->
+        <link rel="stylesheet" href="{{URL}}css/venobox.css">
+        <!-- Nice Select CSS -->
+        <link rel="stylesheet" href="{{URL}}css/nice-select.css">
+        <!-- Magnific Popup CSS -->
+        <link rel="stylesheet" href="{{URL}}css/magnific-popup.css">
+        <!-- Bootstrap V4.1.3 Fremwork CSS -->
+        <link rel="stylesheet" href="{{URL}}css/bootstrap.min.css">
+        <!-- Helper CSS -->
+        <link rel="stylesheet" href="{{URL}}css/helper.css">
+        <!-- Main Style CSS -->
+        <link rel="stylesheet" href="{{URL}}style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="{{URL}}css/responsive.css">
+        <!-- Modernizr js -->
+        <script src="{{URL}}js/vendor/modernizr-2.8.3.min.js"></script>
+        
+        @yield('styles')
+    </head>
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+            <!-- Begin Header Area -->
+           @include('layouts.partials.header')
+            <!-- Header Area End Here -->
+            <!-- Begin Slider With Banner Area -->
+          {{--  @include('layouts.partials.slider_banner') --}}
+            <!-- Slider With Banner Area End Here -->
+            <!-- Begin Static Top Area -->
+          {{--  @include('layouts.partials.static_top') --}}
+            <!-- Static Top Area End Here -->
+            <!-- product-area start -->
+          {{--  @include('layouts.partials.product_area') --}}
+            <!-- product-area end -->
+            <!-- Begin Li's Static Banner Area -->
+         {{--   @include('layouts.partials.static_banner') --}}
+            <!-- Li's Static Banner Area End Here -->
+            <!-- Begin Li's Laptop Product Area -->
+         {{--   @include('layouts.partials.product_area_li') --}}
+            <!-- Li's Laptop Product Area End Here -->
+            <!-- Begin Li's TV & Audio Product Area -->
+         {{-- @include('layouts.partials.tv&audio_product') --}}
+            <!-- Li's TV & Audio Product Area End Here -->
+            <!-- Begin Li's Static Home Area -->
+         {{--  @include('layouts.partials.li_static_home') --}}
+            <!-- Li's Static Home Area End Here -->
+            <!-- Begin Group Featured Product Area -->
+         {{--  @include('layouts.partials.groupfeatured_product') --}}
+            <!-- Group Featured Product Area End Here -->
+            <!-- Begin Footer Area -->
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.98.0">
-    <title>MiBodega - @yield('title')</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cover/">
-
-    <link href="<?= URL . 'css/bootstrap.min.css'?>" rel="stylesheet">
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-        .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-    </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="<?= URL . 'css/cover.css'?>" rel="stylesheet">
-    @yield('mis_estilos')
-</head>
-
-<body class="d-flex h-100 text-center text-white bg-dark">
-
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-            <div>
-                <h3 class="float-md-start mb-0">Cover</h3>
-                <nav class="nav nav-masthead justify-content-center float-md-end">
-                    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link fw-bold py-1 px-0" href="#">Features</a>
-                    <a class="nav-link fw-bold py-1 px-0" href="#">Contact</a>
-                </nav>
-            </div>
-        </header>
-
-        <main class="px-3">
+            {{-- Contenido --}}
             @yield('content')
-        </main>
 
-        <footer class="mt-auto text-white-50">
-            <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
-        </footer>
-    </div>
+            @include('layouts.partials.footer')
+            <!-- Footer Area End Here -->
+            <!-- Begin Quick View | Modal Area -->
+            @include('layouts.partials.modal')   
+            <!-- Quick View | Modal Area End Here -->
+        </div>
+        <!-- Body Wrapper End Here -->
+        <!-- jQuery-V1.12.4 -->
+        <script src="{{URL}}js/vendor/jquery-1.12.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="{{URL}}js/vendor/popper.min.js"></script>
+        <!-- Bootstrap V4.1.3 Fremwork js -->
+        <script src="{{URL}}js/bootstrap.min.js"></script>
+        <!-- Ajax Mail js -->
+        <script src="{{URL}}js/ajax-mail.js"></script>
+        <!-- Meanmenu js -->
+        <script src="{{URL}}js/jquery.meanmenu.min.js"></script>
+        <!-- Wow.min js -->
+        <script src="{{URL}}js/wow.min.js"></script>
+        <!-- Slick Carousel js -->
+        <script src="{{URL}}js/slick.min.js"></script>
+        <!-- Owl Carousel-2 js -->
+        <script src="{{URL}}js/owl.carousel.min.js"></script>
+        <!-- Magnific popup js -->
+        <script src="{{URL}}js/jquery.magnific-popup.min.js"></script>
+        <!-- Isotope js -->
+        <script src="{{URL}}js/isotope.pkgd.min.js"></script>
+        <!-- Imagesloaded js -->
+        <script src="{{URL}}js/imagesloaded.pkgd.min.js"></script>
+        <!-- Mixitup js -->
+        <script src="{{URL}}js/jquery.mixitup.min.js"></script>
+        <!-- Countdown -->
+        <script src="{{URL}}js/jquery.countdown.min.js"></script>
+        <!-- Counterup -->
+        <script src="{{URL}}js/jquery.counterup.min.js"></script>
+        <!-- Waypoints -->
+        <script src="{{URL}}js/waypoints.min.js"></script>
+        <!-- Barrating -->
+        <script src="{{URL}}js/jquery.barrating.min.js"></script>
+        <!-- Jquery-ui -->
+        <script src="{{URL}}js/jquery-ui.min.js"></script>
+        <!-- Venobox -->
+        <script src="{{URL}}js/venobox.min.js"></script>
+        <!-- Nice Select js -->
+        <script src="{{URL}}js/jquery.nice-select.min.js"></script>
+        <!-- ScrollUp js -->
+        <script src="{{URL}}js/scrollUp.min.js"></script>
+        <!-- Main/Activator js -->
+        <script src="{{URL}}js/main.js"></script>
+        @yield('scripts')
+    </body>
 
-    @yield('mis_scripts')
-
-</body>
-
+<!-- index-431:47-->
 </html>
