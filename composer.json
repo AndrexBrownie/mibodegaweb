@@ -10,7 +10,8 @@
 "autoload": {
     "psr-4": {
         "Libs\\":"Libs/",
-        "App\\Controllers\\":"app/controllers"
+        "App\\Controllers\\":"app/controllers",
+        "App\\Models\\": "app/models"
     },
     "files": [
         "app/helpers/helpers.php"
