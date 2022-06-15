@@ -1,6 +1,10 @@
 <?php
 
 namespace Libs;
+
+use App\controllers\CategoriaController;
+use App\Services\CategoriaService;
+
 //use App\Controllers\HomeController;
 
 class Core {
