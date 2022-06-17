@@ -11,21 +11,19 @@ class CategoriaService implements ICategoriaService
    // protected $db;
     private $db;
 
-    public function __construct()
+    public function __construct( Database $db)
     {
-        $this->db = new Database();
+        $this->db = $db;
     }
-
-    
-
-   // public function __construct( Database $db)
-   // {
-   //     $this->db = $db;
-   // }
 
     public function getAll() 
     {
         $result = CategoriaModel::all();
         return $result;
     }
+
+    public function get(int $id){}
+    public function insert($obj){}
+    public function update($obj){}
+    public function delete(int $id){}
 }

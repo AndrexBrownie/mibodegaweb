@@ -2,11 +2,6 @@
 
 namespace Libs;
 
-use App\controllers\CategoriaController;
-use App\Services\CategoriaService;
-use App\Services\Contracts\ICategoriaService;
-use ContainerDI;
-
 //use App\Controllers\HomeController;
 
 class Core {
@@ -25,9 +20,7 @@ class Core {
 
             require_once '../app/controllers/homeController.php';
 
-
-            //modificado
-            if(array_key_exists(1, $entries))
+            if($flag_service)
             {
                 $controller = new \App\Controllers\HomeController($container->getContainer()->get($service_name));
             }
@@ -35,7 +28,6 @@ class Core {
             {
                 $controller = new \App\Controllers\HomeController();
             }
-            ///
 
 
             $controller->index();
@@ -51,7 +43,6 @@ class Core {
             require_once $file_controller;
             $controller_name = '\\App\\Controllers\\' . $url[0] . 'Controller';
 
-            //modificado
            if($flag_service)
            {
             $controller = new $controller_name($container->getContainer()->get($service_name));
