@@ -4,23 +4,40 @@ namespace Libs;
 
 use App\controllers\CategoriaController;
 use App\Services\CategoriaService;
+use App\Services\Contracts\ICategoriaService;
+use ContainerDI;
 
 //use App\Controllers\HomeController;
 
 class Core {
 
-    public function __construct() {
+    public function __construct(ContainerDI $container) {
 
         //$url = $_GET['url'];
          $url = isset($_GET['url'])  ? $_GET['url'] : null;
          $url = rtrim($url, "/");
          $url = explode('/', $url);
 
+         $service_name = "i" . $url[0] . "service";
+         $flag_service = $container->searchEntry($service_name);
 
         if (empty($url[0])) {
 
             require_once '../app/controllers/homeController.php';
-            $controller = new \App\Controllers\HomeController();
+
+
+            //modificado
+            if(array_key_exists(1, $entries))
+            {
+                $controller = new \App\Controllers\HomeController($container->getContainer()->get($service_name));
+            }
+            else
+            {
+                $controller = new \App\Controllers\HomeController();
+            }
+            ///
+
+
             $controller->index();
             return false;
         }
@@ -33,8 +50,16 @@ class Core {
 
             require_once $file_controller;
             $controller_name = '\\App\\Controllers\\' . $url[0] . 'Controller';
+
+            //modificado
+           if($flag_service)
+           {
+            $controller = new $controller_name($container->getContainer()->get($service_name));
+           }else
+           {
             $controller = new $controller_name();
-            
+           }
+
             $nelementos = sizeof($url);
 
             if($nelementos >= 2){

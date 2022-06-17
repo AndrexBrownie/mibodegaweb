@@ -23,7 +23,8 @@
 "require": {
                 "jenssegers/blade": "^1.4",
                 "vlucas/phpdotenv": "^5.4.1",
-                "illuminate/database": "*"
+                "illuminate/database": "*",
+                "php-di/php-di": "^6.4"
         }
 
 }
