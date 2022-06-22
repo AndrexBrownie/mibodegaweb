@@ -2,6 +2,8 @@
 //Arquitectura front controller
 
 use Libs\Core;
+use Libs\ContainerDI;
+
 //auto carga de clases funncionando
 require_once "../vendor/autoload.php";
 
@@ -14,4 +16,4 @@ $dotenv->load();
 
 require_once "../config/config.php";
 
-$Core = new Core();
+$Core = new Core(new ContainerDI);

@@ -10,7 +10,10 @@
 "autoload": {
     "psr-4": {
         "Libs\\":"Libs/",
-        "App\\Controllers\\":"app/controllers"
+        "App\\Controllers\\":"app/controllers",
+        "App\\Models\\": "app/models",
+        "App\\Services\\": "app/services",
+        "App\\Interfaces\\": "app/interfaces"
     },
     "files": [
         "app/helpers/helpers.php"
@@ -19,7 +22,9 @@
 
 "require": {
                 "jenssegers/blade": "^1.4",
-                "vlucas/phpdotenv": "^5.4.1"
+                "vlucas/phpdotenv": "^5.4.1",
+                "illuminate/database": "*",
+                "php-di/php-di": "^6.4"
         }
 
 }
