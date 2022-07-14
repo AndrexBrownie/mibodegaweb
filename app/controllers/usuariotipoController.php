@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Controllers;
+namespace App\controllers;
 
-use App\Interfaces\ICategoriaService;
-use App\Services\CategoriaService;
+use App\Interfaces\IUsuarioTipoService;
+use App\Services\UsuarioTipoService;
 use Libs\Controller;
 
-class CategoriaController extends Controller
+class UsuarioTipoController extends Controller
 {
-    private readonly CategoriaService $_service;
+    private readonly UsuarioTipoService $_service;
 
-    public function __construct(ICategoriaService $service) 
+    public function __construct(IUsuarioTipoService $service) 
     {
         $this->_service = $service;
         $this->loadBlade();
@@ -18,10 +18,10 @@ class CategoriaController extends Controller
 
     public function index()
     {
-        
+
         $data = $this->_service->getAll();
         //myEchoPre($data);
-        echo $this->blade->render('categoria.index', ['data' => $data]);
+        echo $this->blade->render('usuariotipo.index', ['data' => $data]);
     }
 
     public function detail($param = null)
@@ -31,16 +31,15 @@ class CategoriaController extends Controller
 
         $data = $this->_service->get($id);
 
-        echo $this->blade->render('categoria.detail', ['data' => $data]);
+        echo $this->blade->render('usuariotipo.detail', ['data' => $data]);
     }
 
     public function save()
     {
-        $id = isset($_POST['idcategoria']) ? intval($_POST['idcategoria']) : 0;
+        $id = isset($_POST['idtipo']) ? intval($_POST['idtipo']) : 0;
         $obj = new \stdClass();
-        $obj->idcategoria = $id;
+        $obj->idtipo = $id;
         $obj->nombre = $_POST['nombre'];
-        $obj->descripcion = $_POST['descripcion'];
 
         if ($id > 0) {
             $this->_service->update($obj);
@@ -48,7 +47,7 @@ class CategoriaController extends Controller
             $this->_service->insert($obj);
         }
 
-        header("Location:" . URL . "categoria/index");
+        header("Location:" . URL . "usuariotipo/index");
     }
 
     public function delete($param = null)
@@ -57,7 +56,7 @@ class CategoriaController extends Controller
 
         if ($id > 0) {
             $this->_service->delete($id);
-            header("Location:" . URL . "categoria/index");
+            header("Location:" . URL . "usuariotipo/index");
         }
     }
 

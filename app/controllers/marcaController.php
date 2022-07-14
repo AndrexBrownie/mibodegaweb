@@ -2,15 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Interfaces\ICategoriaService;
-use App\Services\CategoriaService;
+use App\Interfaces\IMarcaService;
+use App\Services\MarcaService;
 use Libs\Controller;
 
-class CategoriaController extends Controller
+class MarcaController extends Controller
 {
-    private readonly CategoriaService $_service;
+    private readonly MarcaService $_service;
 
-    public function __construct(ICategoriaService $service) 
+    public function __construct(IMarcaService $service)
     {
         $this->_service = $service;
         $this->loadBlade();
@@ -18,10 +18,10 @@ class CategoriaController extends Controller
 
     public function index()
     {
-        
+
         $data = $this->_service->getAll();
         //myEchoPre($data);
-        echo $this->blade->render('categoria.index', ['data' => $data]);
+        echo $this->blade->render('marca.index', ['data' => $data]);
     }
 
     public function detail($param = null)
@@ -31,14 +31,14 @@ class CategoriaController extends Controller
 
         $data = $this->_service->get($id);
 
-        echo $this->blade->render('categoria.detail', ['data' => $data]);
+        echo $this->blade->render('marca.detail', ['data' => $data]);
     }
 
     public function save()
     {
-        $id = isset($_POST['idcategoria']) ? intval($_POST['idcategoria']) : 0;
+        $id = isset($_POST['idmarca']) ? intval($_POST['idmarca']) : 0;
         $obj = new \stdClass();
-        $obj->idcategoria = $id;
+        $obj->idmarca = $id;
         $obj->nombre = $_POST['nombre'];
         $obj->descripcion = $_POST['descripcion'];
 
@@ -48,7 +48,7 @@ class CategoriaController extends Controller
             $this->_service->insert($obj);
         }
 
-        header("Location:" . URL . "categoria/index");
+        header("Location:" . URL . "marca/index");
     }
 
     public function delete($param = null)
@@ -57,8 +57,7 @@ class CategoriaController extends Controller
 
         if ($id > 0) {
             $this->_service->delete($id);
-            header("Location:" . URL . "categoria/index");
+            header("Location:" . URL . "marca/index");
         }
     }
-
 }

@@ -1,5 +1,7 @@
 <?php
 
+
+
 if (! function_exists('myEchoPre')) {
     function myEchoPre($content)
     {
@@ -22,5 +24,31 @@ if (!function_exists('myEnv')) {
         } else {
             return $default;
         }
+    }
+}
+
+if (!function_exists('selected')) {
+    function selected($id_current, $id_new)
+    {
+        if ($id_current == $id_new) 
+        {
+            return 'selected=selected';
+        }else
+        {
+            return '';
+        }
+    }
+}
+
+if (!function_exists('checked')) {
+    function checked(bool $estado)
+    {
+        if (isset($estado)) {
+            if($estado){
+                return 'checked=checked';
+            }
+        }
+
+        return '';
     }
 }
