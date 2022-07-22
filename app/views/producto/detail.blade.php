@@ -4,7 +4,7 @@
 
 {{--@section('content')--}}
     <div class="container">
-        <form action="{{URL.'producto/save'}}" method="POST">
+        <form action="{{URL.'producto/save'}}" method="POST" id="myForm">
             <input type="hidden" name="idproducto" value="{{$data->idproducto}}">
             <div class="row">
                 <div class="col">

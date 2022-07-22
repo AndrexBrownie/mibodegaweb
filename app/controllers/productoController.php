@@ -71,26 +71,57 @@ class ProductoController extends Controller
         $obj->stockminimo = $_POST['stockminimo'];
         $obj->estado = isset($_POST['estado']) ? 1 : 0;
 
+        $rpta = 0;
+
         if ($id > 0) 
         {
-            $this->_service->update($obj);
+           $rpta = $this->_service->update($obj);
         }else 
         {
-            $this->_service->insert($obj);
+           $rpta = $this->_service->insert($obj);
         }
 
-        header("Location:" . URL . "producto/index");
+        //header("Location:" . URL . "producto/index");
+
+        //array
+        /*$response = [
+            'nombre' => 'Andre'
+        ];*/
+
+
+        if ($rpta) {
+            $response = [
+                'success' => true,
+                'menssage' => 'Producto guardado correctamente',
+                'redirection' => URL.'producto/index'
+            ];
+        }
+
+        echo json_encode($response);
 
     }
 
     public function delete($param = null)
     {
-        $id = isset($param[0]) ? $param[0] : 0;
+       // $id = isset($param[0]) ? $param[0] : 0;
+
+       $id = $param[0] ?? 0;
 
         if ($id > 0) 
         {
-            $this->_service->delete($id);
-            header("Location:" . URL . "producto/index");
+           $rpta =  $this->_service->delete($id);
+            //header("Location:" . URL . "producto/index");
         }
+        
+        if ($rpta) {
+            $response = [
+                'success' => true,
+                'message' => 'Producto eliminado correctamento',
+                'redirection' => URL . 'producto/index'
+            ];
+        }
+
+        echo json_encode($response);
+
     }
 }
