@@ -1,8 +1,4 @@
-@extends('layouts.template')
 
-@section('title', 'Usuarios')
-
-@section('content')
     <div class="container">
         <form action="{{URL.'usuario/save'}}" method="POST">
             <input type="hidden" name="idusuario" value="{{$data->idusuario}}">
@@ -16,7 +12,9 @@
                         <label for="">Clave</label>
                         <input type="text" name="clave" id="clave" value="{{$data->clave}}">
                     </div>
-                    <div class="for-group">
+                </div>
+                <div class="col">
+                    <div class="form-group">
                         <label for="">Tipo</label>
                         <select name="idtipo">
                             @foreach ($usuariostipo as $item)
@@ -30,18 +28,14 @@
                         <label for="">Correo</label>
                         <input type="email" name="correo" value="{{$data->correo}}">
                     </div>
-                    
-                    
-                    <div class="row">
-                        <div class="col form-group">
-                            <a href="{{URL.'usuario/'}}" class="btn btn-danger form-control">CANCELAR <i class="fa fa-close"></i></a>
-                        </div>
-                        <div class="col form-group">
-                            <button type="submit" class="btn btn-primary form-control">GUARDAR <i class="fa fa-check"></i></button>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-right">
+                <div class="col modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR <i class="fa fa-close"></i></button>
+                    <button type="submit" class="btn btn-primary">GUARDAR <i class="fa fa-check"></i></button>
                 </div>
             </div>
         </form>
     </div>
-@endsection
+

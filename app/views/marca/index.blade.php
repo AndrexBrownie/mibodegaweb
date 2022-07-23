@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="col-12">
-                <a href="{{URL.'marca/detail/'}}" class="btn btn-primary btn-block">NUEVO <i class="fa fa-plus"></i></a>
+                <a href="{{URL.'marca/detail/'}}" class="btn btn-primary btn-block" is-modal="true" id="nuevo">NUEVO <i class="fa fa-plus"></i></a>
             </div>
         </div>
         <br>
@@ -28,7 +28,7 @@
                     <td>{{$item->nombre}}</td>
                     <td>{{$item->descripcion}}</td>
                     <td>
-                        <a href='{{URL."marca/detail/{$item->idmarca}"}}' class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                        <a is-modal="true" href='{{URL."marca/detail/{$item->idmarca}"}}' class="btn btn-success"><i class="fa fa-pencil"></i></a>
                         <a href='{{URL."marca/delete/{$item->idmarca}"}}' class="btn btn-danger" onclick="return confirm('¿ Está seguro de eliminar: {{$item->nombre}} ?')"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
@@ -36,4 +36,13 @@
         </tbody>
     </table>
     </div>
+
+    @component('layouts.components.modal')
+        @slot('title', 'Marcas - Detalle')
+        @slot('size', MODAL_NORMAL)
+    @endcomponent
+@endsection
+
+@section('scripts')
+    <script src="{{URL}}/js/mis_scripts/modal_crud.js"></script>
 @endsection

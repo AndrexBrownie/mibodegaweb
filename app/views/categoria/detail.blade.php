@@ -1,8 +1,4 @@
-@extends('layouts.template')
 
-@section('title', 'Categorias')
-
-@section('content')
     <div class="container">
         <form action="{{URL.'categoria/save'}}" method="POST">
             <input type="hidden" name="idcategoria" value="{{$data->idcategoria}}">
@@ -16,16 +12,15 @@
                         <label for="">Descripción</label>
                         <input type="text" name="descripcion" id="descripcion" value="{{$data->descripcion}}">
                     </div>
-                    <div class="row">
-                        <div class="col form-group">
-                            <a href="{{URL.'categoria/'}}" class="btn btn-danger form-control">CANCELAR <i class="fa fa-close"></i></a>
-                        </div>
-                        <div class="col form-group">
-                            <button type="submit" class="btn btn-primary form-control">GUARDAR <i class="fa fa-check"></i></button>
-                        </div>
-                    </div>
+                </div>
+            </div>
+
+             <div class="row justify-content-right">
+                <div class="col modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR <i class="fa fa-close"></i></button>
+                    <button type="submit" class="btn btn-primary">GUARDAR <i class="fa fa-check"></i></button>
                 </div>
             </div>
         </form>
     </div>
-@endsection
+
