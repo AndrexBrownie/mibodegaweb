@@ -65,7 +65,7 @@ class ProductoService implements IProductoService
         $model->stock = $obj->stock;
         $model->stockminimo = $obj->stockminimo;
         $model->estado = $obj->estado;
-        $model->save();
+        return $model->save();
 
         //en caso sea una venta
         //return $model->idproducto;
@@ -85,7 +85,6 @@ class ProductoService implements IProductoService
         $model->stockminimo = $obj->stockminimo;
         $model->estado = $obj->estado;
         return $model->save();
-
     }
 
     public function delete(int $id)
