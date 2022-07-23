@@ -1,102 +1,114 @@
-
-//JQuery
 window.addEventListener('DOMContentLoaded', () => {
-    $('a[is-modal="true"]').on('click', function (e) {
-        e.preventDefault();
+  $('a[is-modal="true"]').on('click', function (e) {
+    e.preventDefault();
 
-        $('#contentModal').load(this.href, function () {
-            $('#modalGenerico').modal({ keyboard: true }, 'show');
+    $('#contentModal').load(this.href, function () {
+      $('#modalGenerico').modal({ keyboard: true }, 'show');
 
-            crud();
-        });
-
-        return false;
+      crud();
     });
+
+    return false;
+  });
 });
 
-//-----------------------------
-
-//JavaScript
 function crud() {
-    const form = document.querySelector('#myForm');
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        
-        //obtenemos los datos del formulario
-        const formdata = new FormData(form);
+  //Establecemos una referencia al formulario
+  const form = document.querySelector('#myForm');
+  configValidator(form);
 
-        //Aquí validamos los datos
+  form.addEventListener('submit', (e) => {
+    //Detenemos el envío de datos al servidor
+    e.preventDefault();
 
-        //asincronia
-        //Antes Ajax - Ahora Fetch
+    //Capturamos los datos del formulario
+    const formdata = new FormData(form);
 
-        //obtenemos la url a la que enviamos la petición
-        const url = form.action;
+    //Aquí validaríamos los datos
+    const errors = validate(form, constraints);
+    showErrors(form, errors || {});
 
-        fetch(url, {method: 'POST', body: formdata})
+    if (!errors) {
+      //Obtenemos la url a la que enviaremos la petición
+      const url = form.action;
+
+      fetch(url, { method: 'POST', body: formdata })
         .then(res => res.json())
         .then(data => {
-            if (data.success) {
-                Swal.fire({
-                    title: '¡Bien!',
-                    text: data.message,
-                    icon: 'success',
-                    showConfirmButton: false,
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Aceptar !',
-                    timer: 1500
-                }).then(() => {
-                    location.href = data.redirection;
-                });
-            } else {
-                new Error('Error al Guardar el Producto')
-            }
+          if (data.success) {
+            Swal.fire({
+              title: '¡Bien!',
+              text: data.message,
+              icon: 'success',
+              showConfirmButton: true,
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar !',
+              timer: 2000
+            }).then(() => {
+              location.href = data.redirection;
+            });
+          } else {
+            new Error('Error al guardar el producto')
+          }
         })
         .catch(error => new Error(error))
+    } else {
+      showErrors(form, errors || {})
+    }
+  });
 
-        //objeto que no pertenece a ninguna clase
-        /*const opciones = {
-            method: 'POST',
-            body: formdata
-        }*/
-    
-    });
 }
 
 function remove(e) {
-    const action = e.getAttribute('my-action');
-    const name = e.getAttribute('my-name');
+  const action = e.getAttribute('my-action');
+  const name = e.getAttribute('my-name');
 
-    Swal.fire({
-        title: 'Eliminar',
-        text: "Está seguro de eliminar el registro: " + name + "?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, elimínalo!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch(action)
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            title: '¡Eliminado!',
-                            text: data.message,
-                            icon: 'success',
-                            showConfirmButton: true,
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Aceptar !',
-                            timer: 2000
-                        }).then(() => {
-                            location.href = data.redirection;
-                        });
-                    } else {
-                        allert('Algo salió mal');
-                    }
-                })
-        }
-    })
+  Swal.fire({
+    title: 'Eliminar',
+    text: "Está seguro de eliminar el registro: " + name + "?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, elimínalo!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(action)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            Swal.fire({
+              title: '¡Eliminado!',
+              text: data.message,
+              icon: 'success',
+              showConfirmButton: true,
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'Aceptar !',
+              timer: 2000
+            }).then(() => {
+              location.href = data.redirection;
+            });
+          } else {
+            alert('Algo salió mal');
+          }
+        })
+    }
+  })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

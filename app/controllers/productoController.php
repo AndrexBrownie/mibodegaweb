@@ -92,7 +92,7 @@ class ProductoController extends Controller
         if ($rpta) {
             $response = [
                 'success' => true,
-                'menssage' => 'Producto guardado correctamente',
+                'message' => 'Producto guardado correctamente',
                 'redirection' => URL.'producto/index'
             ];
         }
@@ -116,7 +116,7 @@ class ProductoController extends Controller
         if ($rpta) {
             $response = [
                 'success' => true,
-                'message' => 'Producto eliminado correctamento',
+                'message' => 'Producto eliminado correctamente',
                 'redirection' => URL . 'producto/index'
             ];
         }
