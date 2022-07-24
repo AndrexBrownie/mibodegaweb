@@ -3,6 +3,7 @@
 use App\Services\CategoriaService;
 use App\Services\ClienteService;
 use App\Services\MarcaService;
+use App\Services\PermisoService;
 use App\Services\ProductoService;
 use App\Services\UsuarioTipoService;
 use App\Services\UsuarioService;
@@ -27,5 +28,8 @@ return [
     },
     'iclienteservice' => function (Container $c) {
         return new ClienteService($c->get(Database::class));
+    },
+    'ipermisoservice' => function (Container $c) {
+        return new PermisoService($c->get(Database::class));
     }
 ];
