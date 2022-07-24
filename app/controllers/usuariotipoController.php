@@ -41,13 +41,24 @@ class UsuarioTipoController extends Controller
         $obj->idtipo = $id;
         $obj->nombre = $_POST['nombre'];
 
+        $rpta = 0;
+
         if ($id > 0) {
-            $this->_service->update($obj);
+            $rpta = $this->_service->update($obj);
         } else {
-            $this->_service->insert($obj);
+            $rpta = $this->_service->insert($obj);
         }
 
-        header("Location:" . URL . "usuariotipo/index");
+        if ($rpta) {
+            $response = [
+                'success' => true,
+                'message' => 'Tipo de Usuario guardado correctamente',
+                'redirection' => URL . 'usuariotipo/index'
+            ];
+        }
+
+        echo json_encode($response);
+
     }
 
     public function delete($param = null)
@@ -55,9 +66,18 @@ class UsuarioTipoController extends Controller
         $id = isset($param[0]) ? $param[0] : 0;
 
         if ($id > 0) {
-            $this->_service->delete($id);
-            header("Location:" . URL . "usuariotipo/index");
+            $rpta =  $this->_service->delete($id);
         }
+
+        if ($rpta) {
+            $response = [
+                'success' => true,
+                'message' => 'Tipo de Usuario eliminado correctamente',
+                'redirection' => URL . 'usuariotipo/index'
+            ];
+        }
+
+        echo json_encode($response);
     }
 
 }

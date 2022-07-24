@@ -50,7 +50,7 @@ class UsuarioService implements IUsuarioService
         $model->usuario = $obj->usuario;
         $model->clave = $obj->clave;
         $model->correo = $obj->correo;
-        $model->save();
+        return $model->save();
     }
     public function update($obj)
     {
@@ -60,11 +60,11 @@ class UsuarioService implements IUsuarioService
         $model->usuario = $obj->usuario;
         $model->clave = $obj->clave;
         $model->correo = $obj->correo;
-        $model->save();
+        return $model->save();
     }
     public function delete(int $id)
     {
         $model = UsuarioModel::find($id);
-        $model->delete();
+        return $model->delete();
     }
 }

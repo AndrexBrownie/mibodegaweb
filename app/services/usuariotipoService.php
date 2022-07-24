@@ -42,7 +42,7 @@ class UsuarioTipoService implements IUsuarioTipoService
         $model = new UsuarioTipoModel();
         $model->idtipo = $obj->idtipo;
         $model->nombre = $obj->nombre;
-        $model->save();
+        return $model->save();
     }
 
     public function update($obj)
@@ -50,12 +50,12 @@ class UsuarioTipoService implements IUsuarioTipoService
         $model = UsuarioTipoModel::find($obj->idtipo);
         $model->idtipo = $obj->idtipo;
         $model->nombre = $obj->nombre;
-        $model->save();
+        return $model->save();
     }
 
     public function delete(int $id)
     {
         $model = UsuarioTipoModel::find($id);
-        $model->delete();
+        return $model->delete();
     }
 }

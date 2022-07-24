@@ -3,6 +3,10 @@
 
 @section('title', 'Usuarios')
 
+@section('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.min.css">
+@endsection
+
 @section('content')
     <div class="container">
 
@@ -33,7 +37,7 @@
                     <td>{{$item->usuariotipo}}</td>
                     <td>
                         <a is-modal="true" href='{{URL."usuario/detail/{$item->idusuario}/{$item->idtipo}"}}' class="btn btn-success"><i class="fa fa-pencil"></i></a>
-                        <a href='{{URL."usuario/delete/{$item->idusuario}"}}' class="btn btn-danger" onclick="return confirm('¿ Está seguro de eliminar: {{$item->usuario}} ?')"><i class="fa fa-trash"></i></a>
+                        <button my-name="{{$item->usuario}}" my-action='{{URL."usuario/delete/{$item->idusuario}"}}' class="btn btn-danger" onclick="remove(this)"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
             @endforeach
@@ -48,5 +52,6 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.min.js"></script>
     <script src="{{URL}}/js/mis_scripts/modal_crud.js"></script>
 @endsection

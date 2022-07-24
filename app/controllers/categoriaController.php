@@ -42,23 +42,45 @@ class CategoriaController extends Controller
         $obj->nombre = $_POST['nombre'];
         $obj->descripcion = $_POST['descripcion'];
 
+        $rpta = 0;
+
         if ($id > 0) {
-            $this->_service->update($obj);
+           $rpta = $this->_service->update($obj);
         } else {
-            $this->_service->insert($obj);
+           $rpta = $this->_service->insert($obj);
         }
 
-        header("Location:" . URL . "categoria/index");
+        if($rpta)
+        {
+            $response = [
+                'success' => true,
+                'message' => 'Categoria guardado correctamente',
+                'redirection' => URL.'categoria/index'
+            ];
+        }
+
+        echo json_encode($response);
     }
 
     public function delete($param = null)
     {
         $id = isset($param[0]) ? $param[0] : 0;
 
-        if ($id > 0) {
-            $this->_service->delete($id);
-            header("Location:" . URL . "categoria/index");
+        if ($id > 0) 
+        {
+            $rpta = $this->_service->delete($id);
         }
+
+        if($rpta)
+        {
+            $response = [
+                'success' => true,
+                'message' => 'Categoria eliminado correctamente',
+                'redirection' => URL.'categoria/index'
+            ];
+        }
+
+        echo json_encode($response);
     }
 
 }

@@ -42,7 +42,7 @@ class MarcaService implements IMarcaService
         $model->idmarca = $obj->idmarca;
         $model->nombre = $obj->nombre;
         $model->descripcion = $obj->descripcion;
-        $model->save();
+        return $model->save();
     }
     public function update($obj)
     {
@@ -50,11 +50,11 @@ class MarcaService implements IMarcaService
         $model->idmarca = $obj->idmarca;
         $model->nombre = $obj->nombre;
         $model->descripcion = $obj->descripcion;
-        $model->save();
+        return $model->save();
     }
     public function delete(int $id)
     {
         $model = MarcaModel::find($id);
-        $model->delete();
+        return $model->delete();
     }
 }

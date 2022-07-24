@@ -42,22 +42,44 @@ class MarcaController extends Controller
         $obj->nombre = $_POST['nombre'];
         $obj->descripcion = $_POST['descripcion'];
 
+        $rpta = 0;
+
         if ($id > 0) {
-            $this->_service->update($obj);
+           $rpta = $this->_service->update($obj);
         } else {
-            $this->_service->insert($obj);
+           $rpta = $this->_service->insert($obj);
         }
 
-        header("Location:" . URL . "marca/index");
+        if ($rpta) {
+            $response = [
+                'success' => true,
+                'message' => 'Marca guardado correctamente',
+                'redirection' => URL . 'marca/index'
+            ];
+        }
+
+        echo json_encode($response);
+
     }
 
     public function delete($param = null)
     {
         $id = isset($param[0]) ? $param[0] : 0;
 
-        if ($id > 0) {
-            $this->_service->delete($id);
-            header("Location:" . URL . "marca/index");
+        if ($id > 0) 
+        {
+            $rpta = $this->_service->delete($id);
         }
+
+        if ($rpta) {
+            $response = [
+                'success' => true,
+                'message' => 'Marca eliminado correctamente',
+                'redirection' => URL . 'marca/index'
+            ];
+        }
+
+        echo json_encode($response);
+
     }
 }

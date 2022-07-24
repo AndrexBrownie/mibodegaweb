@@ -3,6 +3,10 @@
 
 @section('title', 'Marcas')
 
+@section('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.min.css">
+@endsection
+
 @section('content')
     <div class="container">
 
@@ -29,7 +33,7 @@
                     <td>{{$item->descripcion}}</td>
                     <td>
                         <a is-modal="true" href='{{URL."marca/detail/{$item->idmarca}"}}' class="btn btn-success"><i class="fa fa-pencil"></i></a>
-                        <a href='{{URL."marca/delete/{$item->idmarca}"}}' class="btn btn-danger" onclick="return confirm('¿ Está seguro de eliminar: {{$item->nombre}} ?')"><i class="fa fa-trash"></i></a>
+                        <button my-name="{{$item->nombre}}" my-action='{{URL."marca/delete/{$item->idmarca}"}}' class="btn btn-danger" onclick="remove(this)"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
             @endforeach
@@ -44,5 +48,6 @@
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.min.js"></script>
     <script src="{{URL}}/js/mis_scripts/modal_crud.js"></script>
 @endsection
