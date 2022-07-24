@@ -31,7 +31,11 @@ class UsuarioService implements IUsuarioService
         return $result;
     }
 
-    
+    public function getAllSimple()
+    {
+        $result = UsuarioModel::select('idusuario', 'usuario')->get();
+        return $result;
+    }
 
     public function get(int $id)
     {

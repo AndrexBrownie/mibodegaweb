@@ -2,10 +2,9 @@
 
 namespace App\Interfaces;
 
-interface IUsuarioService
+interface IClienteService
 {
     public function getAll();
-    public function getAllSimple();
     public function get(int $id);
     public function insert($obj);
     public function update($obj);
