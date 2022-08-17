@@ -59,6 +59,11 @@ class Core
                         $container->getContainer()->get('iclienteservice'),
                         $container->getContainer()->get('iusuarioservice')
                     );
+                } elseif ($service_name == 'iclientservice') {
+                    $controller = new $controller_name(
+                        $container->getContainer()->get('iclientservice'),
+                        $container->getContainer()->get('iclienttiposervice')
+                    );
                 } elseif ($service_name == 'ipermisoservice') {
                     $controller = new $controller_name(
                         $container->getContainer()->get('ipermisoservice'),
